@@ -37,7 +37,7 @@ defmodule HelpersTest do
     assert to_safe_html_attrs(%{f_o: "bar"}) == [["f-o", 61, 34, "bar", 34, 32]]
     assert to_safe_html_attrs(%{foo: "b>r"}) == [["foo", 61, 34, [[[], "b" | "&gt;"] | "r"], 34, 32]]
 
-    assert to_safe_html_attrs(%{foo: "bar", baz: "qux"}) == [
+    assert to_safe_html_attrs(%{foo: "bar", baz: "qux"}) |> Enum.sort() == [
              ["baz", 61, 34, "qux", 34, 32],
              ["foo", 61, 34, "bar", 34, 32]
            ]
